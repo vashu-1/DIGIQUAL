@@ -98,7 +98,7 @@ const CompanyLanding = () => {
             EduBridge Company
           </h1>
           <Link
-            href="/auth"
+            href="/auth/signin"
             className="rounded-full bg-slate-900 px-5 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
           >
             Getting Started
@@ -221,7 +221,7 @@ const CompanyLanding = () => {
             </h3>
           </div>
           <Link
-            href="/auth"
+            href="/auth/signin"
             className="rounded-full border border-slate-300 bg-white px-5 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400"
           >
             Explore Auth Flow
@@ -325,16 +325,16 @@ const CompanyLanding = () => {
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-4">
             <Link
-              href="/auth"
+              href="/auth/signin"
               className="rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
             >
               Getting Started
             </Link>
             <Link
-              href="/auth/signup"
+              href="/auth/signin"
               className="rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-400"
             >
-              Create Student Account
+              Sign In with Google
             </Link>
           </div>
         </div>
@@ -389,12 +389,7 @@ const CompanyLanding = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/auth/signup" className="transition hover:text-slate-900">
-                  Create Account
-                </Link>
-              </li>
-              <li>
-                <Link href="/auth" className="transition hover:text-slate-900">
+                <Link href="/auth/signin" className="transition hover:text-slate-900">
                   Getting Started
                 </Link>
               </li>
