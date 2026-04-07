@@ -1,0 +1,108 @@
+@import 'tailwindcss';
+
+:root {
+  --background: #fffdf8;
+  --foreground: #1f2937;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+}
+
+body {
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(251, 191, 36, 0.16),
+      transparent 33%
+    ),
+    radial-gradient(
+      circle at 92% 15%,
+      rgba(249, 115, 22, 0.14),
+      transparent 36%
+    ),
+    linear-gradient(180deg, #fffdf8 0%, #fff9ee 100%);
+  color: var(--foreground);
+  font-family: var(--font-body), 'Segoe UI', sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.font-display {
+  font-family: var(--font-display), 'Arial Black', sans-serif;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+}
+
+.landing-shell {
+  min-height: 100vh;
+}
+
+.landing-bg-shape {
+  position: absolute;
+  z-index: -1;
+  border-radius: 9999px;
+  filter: blur(58px);
+  opacity: 0.75;
+}
+
+.landing-bg-shape-one {
+  top: -70px;
+  left: -70px;
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(
+    135deg,
+    rgba(251, 191, 36, 0.44),
+    rgba(249, 115, 22, 0.26)
+  );
+}
+
+.landing-bg-shape-two {
+  bottom: 45px;
+  right: -60px;
+  width: 260px;
+  height: 260px;
+  background: linear-gradient(
+    135deg,
+    rgba(253, 186, 116, 0.38),
+    rgba(251, 146, 60, 0.28)
+  );
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 700ms ease-out both;
+}
+
+.animate-fade-in-up-delay {
+  animation: fadeInUp 700ms ease-out 120ms both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .landing-bg-shape-one {
+    width: 220px;
+    height: 220px;
+  }
+
+  .landing-bg-shape-two {
+    width: 180px;
+    height: 180px;
+    bottom: 10px;
+  }
+}
