@@ -1,13 +1,15 @@
 'use client';
 
 import React, { useState } from 'react';
-import { supabase } from '@/lib/supabase/client';
+import { getSupabaseClient } from '@/lib/supabase/client';
 
 const GoogleSignInButton = () => {
   const [loading, setLoading] = useState(false);
 
   const signInWithGoogle = async () => {
     setLoading(true);
+
+    const supabase = getSupabaseClient();
 
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
