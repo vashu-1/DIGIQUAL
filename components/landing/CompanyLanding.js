@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 const companyStats = [
@@ -35,15 +35,15 @@ const processSteps = [
   },
   {
     step: '02',
-    title: 'Authenticate & Verify',
+    title: 'Compare Options',
     description:
-      'Users enter a secure authentication flow before accessing batch purchase and enrollment actions.',
+      'Learners review batch schedules, outcomes, and mentor support before choosing a path.',
   },
   {
     step: '03',
-    title: 'Purchase & Start Learning',
+    title: 'Enroll & Start Learning',
     description:
-      'After verification, students purchase online batches and track progress from a dedicated portal.',
+      'After selecting a batch, students move into guided learning with clear progress tracking.',
   },
 ];
 
@@ -71,7 +71,7 @@ const faqs = [
   {
     question: 'Can students access multiple institute batches?',
     answer:
-      'Yes, authenticated students can compare and purchase batches across partner institutes from one portal account.',
+      'Yes, students can compare and purchase batches across partner institutes from one portal account.',
   },
   {
     question: 'Do you support live and weekend cohorts?',
@@ -80,7 +80,23 @@ const faqs = [
   },
 ];
 
-const CompanyLanding = () => {
+const ProfileCorner = () => (
+  <div className="flex items-center gap-2 rounded-full border border-slate-200 bg-white/95 px-3 py-1.5 shadow-sm backdrop-blur">
+    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-900 text-white shadow-sm">
+      <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4">
+        <path
+          d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-4.42 0-8 2.91-8 6.5V22h16v-1.5c0-3.59-3.58-6.5-8-6.5z"
+          fill="currentColor"
+        />
+      </svg>
+    </span>
+    <span className="text-xs font-semibold uppercase tracking-wide text-slate-700">
+      Profile
+    </span>
+  </div>
+);
+
+const CompanyLanding = ({ isAuthenticated }) => {
   return (
     <main className="landing-shell relative isolate overflow-hidden px-6 py-8 md:px-10 lg:px-16">
       <div
@@ -92,17 +108,27 @@ const CompanyLanding = () => {
         aria-hidden="true"
       />
 
+      {isAuthenticated ? (
+        <div className="absolute right-6 top-4 z-20 md:right-10 lg:right-16">
+          <ProfileCorner />
+        </div>
+      ) : null}
+
       <section className="w-full rounded-3xl border border-orange-200/80 bg-white/90 p-6 shadow-sm md:p-8">
         <nav className="mb-10 flex flex-wrap items-center justify-between gap-4">
           <h1 className="font-display text-3xl text-slate-900">
             EduBridge Company
           </h1>
-          <Link
-            href="/auth/signin"
-            className="rounded-full bg-slate-900 px-5 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
-          >
-            Getting Started
-          </Link>
+          {isAuthenticated ? (
+            <ProfileCorner />
+          ) : (
+            <Link
+              href="/auth/signin"
+              className="rounded-full bg-slate-900 px-5 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
+            >
+              Get Started
+            </Link>
+          )}
         </nav>
 
         <div className="grid items-center gap-8 md:grid-cols-2">
@@ -123,7 +149,7 @@ const CompanyLanding = () => {
                 href="/auth/signin"
                 className="rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-orange-600"
               >
-                Continue to Login
+                Get Started
               </Link>
               <a
                 href="#about"
@@ -210,7 +236,7 @@ const CompanyLanding = () => {
         ))}
       </section>
 
-      <section className="mt-8 w-full rounded-3xl border border-slate-200 bg-white/90 p-6 shadow-sm md:p-8">
+      <section id="offerings" className="mt-8 w-full rounded-3xl border border-slate-200 bg-white/90 p-6 shadow-sm md:p-8">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.15em] text-orange-700">
@@ -220,12 +246,12 @@ const CompanyLanding = () => {
               Built for Institutes and Students
             </h3>
           </div>
-          <Link
-            href="/auth/signin"
+          <a
+            href="#contact"
             className="rounded-full border border-slate-300 bg-white px-5 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400"
           >
-            Explore Auth Flow
-          </Link>
+            Contact Support
+          </a>
         </div>
 
         <div className="mt-6 grid gap-5 md:grid-cols-3">
@@ -317,36 +343,36 @@ const CompanyLanding = () => {
             Ready to Begin
           </p>
           <h3 className="font-display mt-2 text-3xl text-slate-900 md:text-5xl">
-            Launch Student Access with a Secure Auth Flow
+            Launch Student Learning with a Clean Experience
           </h3>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-700 md:text-base">
-            Start from the company experience, move users to authentication, and
-            then unlock the student portal for verified batch purchase journeys.
+            Start from the company experience and guide students into trusted
+            program discovery, selection, and enrollment.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-4">
-            <Link
-              href="/auth/signin"
+            <a
+              href="#offerings"
               className="rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
             >
-              Getting Started
-            </Link>
-            <Link
-              href="/auth/signin"
+              Browse Programs
+            </a>
+            <a
+              href="#about"
               className="rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-400"
             >
-              Sign In with Google
-            </Link>
+              View Company Overview
+            </a>
           </div>
         </div>
       </section>
 
-      <footer className="mt-2 mb-6 w-full rounded-3xl border border-slate-200 bg-white/90 p-6 shadow-sm md:p-8">
+      <footer id="contact" className="mt-2 mb-6 w-full rounded-3xl border border-slate-200 bg-white/90 p-6 shadow-sm md:p-8">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <h4 className="font-display text-2xl text-slate-900">EduBridge</h4>
             <p className="mt-3 text-sm leading-6 text-slate-600">
               A company-first education platform connecting students with trusted
-              institutes, secure authentication, and outcome-focused batches.
+              institutes and outcome-focused batches.
             </p>
           </div>
 
@@ -384,17 +410,17 @@ const CompanyLanding = () => {
             </h5>
             <ul className="mt-3 space-y-2 text-sm text-slate-600">
               <li>
-                <Link href="/auth/signin" className="transition hover:text-slate-900">
-                  Sign In
-                </Link>
+                <a href="#offerings" className="transition hover:text-slate-900">
+                  Browse Programs
+                </a>
               </li>
               <li>
-                <Link href="/auth/signin" className="transition hover:text-slate-900">
-                  Getting Started
-                </Link>
+                <a href="#about" className="transition hover:text-slate-900">
+                  Company Overview
+                </a>
               </li>
               <li>
-                <a href="#" className="transition hover:text-slate-900">
+                <a href="#contact" className="transition hover:text-slate-900">
                   Student Help Center
                 </a>
               </li>
